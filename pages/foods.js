@@ -8,10 +8,10 @@ import Mybutton from './components/Mybutton';
 import Mytext from './components/Mytext';
 import { CheckBox } from 'react-native-elements';
 
-export default class Beverages extends React.Component {
+export default class Foods extends React.Component {
   constructor(props) {
     super(props);
-    this.ref = firebase.firestore().collection('beverage-items');
+    this.ref = firebase.firestore().collection('food-items');
     this.unsubscribe = null;
     this.state = {
       textInput: '',
@@ -70,7 +70,7 @@ render(){
           backgroundColor: 'white',
           flexDirection: 'column',
         }}>
-        <ImageBackground source={require('./beverages.jpg')} style={{width: '100%', height: '100%'}}>
+        <ImageBackground source={require('./food.jpg')} style={{width: '100%', height: '100%'}}>
           <View style={{flex:1,flexDirection:'column'}}>
               <FlatList
                 data={this.state.items}
