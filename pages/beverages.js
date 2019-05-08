@@ -1,9 +1,9 @@
 /*Home Screen With buttons to navigate to diffrent options*/
 import React from 'react';
-import { Text,View,ImageBackground,TextInput} from 'react-native';
+import firebase from 'react-native-firebase';
+import { FlatList,Text,Button,View,ImageBackground,TextInput} from 'react-native';
 import {createStackNavigator,createAppContainer} from 'react-navigation';
-import SQLite from 'react-native-sqlite-storage';
-
+import Item from './Item';
 import Mybutton from './components/Mybutton';
 import Mytext from './components/Mytext';
 import { CheckBox } from 'react-native-elements';
@@ -13,36 +13,55 @@ let db;
 export default class Beverages extends React.Component {
   constructor(props) {
     super(props);
+    this.ref = firebase.firestore().collection('beverage-items');
+    this.unsubscribe = null;
     this.state = {
-            checked:false,
-            text: 'Enter Qty',
+      textInput: '',
+            items: []
         };
   }
 
-// componentDidMount() {
-//   db = SQLite.openDatabase({ name: "food", createFromLocation: '~www/food.db' },
-//   this.openSuccess, this.openError);
-// }
+updateTextInput(value) {
+  this.setState({textInput: value});
+}
 
-// openSuccess() {
-//         console.log("Database is opened");
-// }
+addItem(){
+  this.ref.add({
+    name:this.state.textInput,
+    price: 0,
+  });
 
-// openError(err) {
-//         console.log("error: ", err);
-// }
+  this.setState({
+    textinput:'',
+  });
+}
 
-// db.transaction( tx => {
-//   tx.executeSql('SELECT * FROM foodlist WHERE id=1', [], (tx, results) => {
-//             console.log("Query completed");
-//              var len = results.rows.length;
-//            if (len > 0) {
-//                 let row = results.rows.item(0);
-//                 this.setState({itemName: row.name});
-//                 this.setState({itemPrice: row.price});
-//             }
-//   });
-// });
+componentDidMount() {
+    this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate) 
+}
+
+componentWillUnmount() {
+    this.unsubscribe();
+}
+
+onCollectionUpdate = (querySnapshot) => {
+  const items = [];
+  querySnapshot.forEach((doc) => {
+    const { name, price } = doc.data();
+    
+    items.push({
+      key: doc.id,
+      doc, // DocumentSnapshot
+      name,
+      price,
+    });
+  });
+
+  this.setState({ 
+    items,
+    loading: false,
+ });
+}
 
 render(){
 
@@ -55,18 +74,19 @@ render(){
         }}>
         <ImageBackground source={require('./beverages.jpg')} style={{width: '100%', height: '100%'}}>
           <View style={{flex:1,flexDirection:'column'}}>
-              <TextInput style={{height: 50, borderColor: 'white', borderWidth: 3}}
-              onChangeText={text => this.setState({quantity:text})}/>
-              <CheckBox
-                right
-                title='Add Item'
-                iconRight
-                iconType='material'
-                checkedIcon='clear'
-                uncheckedIcon='add'
-                checkedColor='black'
-                checked={this.state.checked}
-                onPress={() => this.setState({checked:!this.state.checked})}
+              <FlatList
+                data={this.state.items}
+                renderItem={({ item }) => <Item {...item} />}
+              />
+              <TextInput
+                  placeholder={'Add Item'}
+                  value={this.state.textInput}
+                  onChangeText={(text) => this.updateTextInput(text)}
+              />
+              <Button
+                  title={'Add Item'}
+                  disabled={!this.state.textInput.length}
+                  onPress={() => this.addItem()}
               />
           </View>
           <Mybutton
