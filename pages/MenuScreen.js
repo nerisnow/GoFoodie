@@ -6,7 +6,7 @@ import {createStackNavigator,createAppContainer} from 'react-navigation';
 import Mybutton from './components/Mybutton';
 import Mytext from './components/Mytext';
 import SQLite from 'react-native-sqlite-storage'; 
-const db = SQLite.openDatabase('test.db', '1.0', '', 1); 
+
 
 export default class Menu extends React.Component {
   constructor(props) {
@@ -50,7 +50,7 @@ export default class Menu extends React.Component {
               <View style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
                 <Mybutton
                 title="BAKERY"
-                customClick={() => this.props.navigation.navigate('HomeS')}
+                customClick={() => this.props.navigation.navigate('BakeryS')}
                 />
               </View>
               </ImageBackground>

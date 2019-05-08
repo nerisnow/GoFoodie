@@ -5,6 +5,7 @@ import Home from './pages/HomeScreen';
 import Menu from './pages/MenuScreen';
 import Beverages from './pages/beverages';
 import Foods from './pages/foods';
+import Bakery from './pages/bakery';
 
 const RootStack = createStackNavigator(
   {
@@ -12,6 +13,7 @@ const RootStack = createStackNavigator(
   MenuS: Menu,
   BeveragesS: Beverages,
   FoodsS: Foods,
+  BakeryS: Bakery,
   },
   {
     initialRouteName: "HomeS"
