@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "285903010779",
+    "firebase_url": "https://go-foodie.firebaseio.com",
+    "project_id": "go-foodie",
+    "storage_bucket": "go-foodie.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:285903010779:android:d243671cd9a36e02",
+        "android_client_info": {
+          "package_name": "com.gofoodie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "285903010779-o1itvudbpn204c1adob9k3k7mvl0dg7o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gofoodie",
+            "certificate_hash": "78fe277179932d6337371542e19ae2c5a8af685b"
+          }
+        },
+        {
+          "client_id": "285903010779-4vt39eg3foknrkl5ju3dt6js1v825tho.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1EBh6CYYBkVKbtJ7amh2_gaqgVgiKg2o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "285903010779-4vt39eg3foknrkl5ju3dt6js1v825tho.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
