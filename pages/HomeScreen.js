@@ -13,7 +13,7 @@ export default class Home extends React.Component {
       <View
         style={{
           flex: 1,
-          backgroundColor: 'white',
+          backgroundColor: 'black',
           flexDirection: 'column',
         }}>
         <ImageBackground source={require('./circle.png')} 
