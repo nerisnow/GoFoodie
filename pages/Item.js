@@ -16,10 +16,10 @@ render(){
       >
           <View style={{ flex: 1, height: 48, flexDirection: 'row', alignItems: 'center' }}>
               <View style={{ flex: 8 }}>
-                  <Text>{this.props.name}</Text>
+                  <Text style={{color: 'white'}}>{this.props.name}</Text>
               </View>
               <View style={{ flex: 2 }}>
-                  <Text>
+                  <Text style={{color: 'white'}}>
                   {this.props.price}
                   </Text>
               </View>

@@ -61,6 +61,19 @@ onCollectionUpdate = (querySnapshot) => {
  });
 }
 
+renderSeparator = () => {
+return (
+<View
+  style={{
+    height: 2,
+    width: "100%",
+    backgroundColor: "#CED0CE",
+    
+     }}
+/>
+);
+};
+
 render(){
 
     return (
@@ -70,16 +83,22 @@ render(){
           backgroundColor: 'white',
           flexDirection: 'column',
         }}>
-        <ImageBackground source={require('./beverages.jpg')} style={{width: '100%', height: '100%'}}>
+        <ImageBackground source={require('./tea.jpg')} style={{width: '100%', height: '100%'}}>
           <View style={{flex:1,flexDirection:'column'}}>
               <FlatList
                 data={this.state.items}
                 renderItem={({ item }) => <Item {...item} />}
+                
+
               />
               <TextInput
                   placeholder={'Add Item'}
                   value={this.state.textInput}
                   onChangeText={(text) => this.updateTextInput(text)}
+              />
+              <FlatList
+              data={[{key: 'a'}, {key: 'b'}]}
+              renderItem={({item}) => <Text>{item.key}</Text>}
               />
               <Button
                   title={'Add Item'}

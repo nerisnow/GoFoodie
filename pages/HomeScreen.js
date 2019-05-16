@@ -21,7 +21,7 @@ export default class Home extends React.Component {
            <View style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
               <Mytext text="GO FOODIE" />
               <Mybutton
-                title="BROWSE FOOD ITEMS"
+                title="LOGIN WITH GOOGLE TO START"
                 customClick={() => this.props.navigation.navigate('MenuS')}
               />
           </View>

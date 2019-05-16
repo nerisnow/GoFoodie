@@ -61,6 +61,19 @@ onCollectionUpdate = (querySnapshot) => {
  });
 }
 
+renderSeparator = () => {
+return (
+<View
+  style={{
+    height: 2,
+    width: "100%",
+    backgroundColor: "#CED0CE",
+    
+     }}
+/>
+);
+};
+
 render(){
 
     return (
@@ -70,11 +83,12 @@ render(){
           backgroundColor: 'white',
           flexDirection: 'column',
         }}>
-        <ImageBackground source={require('./bakery.jpg')} style={{width: '100%', height: '100%'}}>
+        <ImageBackground source={require('./bakeries.jpg')} style={{width: '100%', height: '100%'}}>
           <View style={{flex:1,flexDirection:'column'}}>
               <FlatList
                 data={this.state.items}
                 renderItem={({ item }) => <Item {...item} />}
+                
               />
               <TextInput
                   placeholder={'Add Item'}
