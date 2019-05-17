@@ -91,20 +91,17 @@ render(){
                 
 
               />
-              <TextInput
+              {/*<TextInput
                   placeholder={'Add Item'}
                   value={this.state.textInput}
                   onChangeText={(text) => this.updateTextInput(text)}
               />
-              <FlatList
-              data={[{key: 'a'}, {key: 'b'}]}
-              renderItem={({item}) => <Text>{item.key}</Text>}
-              />
+              
               <Button
                   title={'Add Item'}
                   disabled={!this.state.textInput.length}
                   onPress={() => this.addItem()}
-              />
+              />*/}
           </View>
           <Mybutton
             title="CHECK OUT"
