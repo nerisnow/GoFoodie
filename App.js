@@ -1,4 +1,3 @@
-/* Example of SQLite Database in React Native */
 import React from "react";
 import {
   GoogleSignin,
@@ -22,8 +21,6 @@ import {
   StatusBar
 } from "react-native";
 import AsyncStorage from "@react-native-community/async-storage";
-import MenuScreen from "./pages/MenuScreen";
-import Home from "./pages/HomeScreen";
 import Menu from "./pages/MenuScreen";
 import Beverages from "./pages/beverages";
 import Foods from "./pages/foods";
@@ -180,9 +177,10 @@ const AppStack = createStackNavigator({
       }
     }
   },
-  initialRouteName: "HomeS",
+  initialRouteName: "MenuS",
   headerLayoutPreset: "center"
 });
+
 const AuthStack = createStackNavigator({ SignIn: SignInScreen });
 
 const CustomDrawerContentComponent = props => (
@@ -229,8 +227,5 @@ const SwitchNavigator = createSwitchNavigator(
     initialRouteName: "AuthLoading"
   }
 );
-
-// const App = createAppContainer(MainDrawerNavigator);
-// export default App;
 
 export default createAppContainer(SwitchNavigator);

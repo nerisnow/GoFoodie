@@ -60,12 +60,12 @@ export default class drawerContentComponents extends Component {
     console.log(this.state);
     return (
       <View style={styles.container}>
-        <Text>{this.state.userName}</Text>
-        <Text>{this.state.userEmail}</Text>
         <Image
-          style={{ width: 50, height: 50 }}
+          style={{ width: 50, height: 50, marginTop: 25 }}
           source={{ uri: this.state.userPhoto }}
         />
+        <Text style={{ margin: 5 }}>{this.state.userName}</Text>
+        <Text style={{ marginBottom: 10 }}>{this.state.userEmail}</Text>
         <Button title="Sign Out" onPress={this._signOutAsync} />
       </View>
     );
