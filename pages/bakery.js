@@ -18,7 +18,7 @@ import { CheckBox } from "react-native-elements";
 export default class Bakery extends React.Component {
   constructor(props) {
     super(props);
-    this.ref = firebase.firestore().collection("bakery-items");
+    this.ref = firebase.firestore().collection("bakery-items"); //to take data from firebase(name and price)
     this.unsubscribe = null;
     this.state = {
       textInput: "",
@@ -109,10 +109,10 @@ export default class Bakery extends React.Component {
                   onPress={() => this.addItem()}
               />*/}
           </View>
-          <Mybutton
+          {/* <Mybutton
             title="CHECK OUT"
             customClick={() => this.props.navigation.navigate("HomeS")}
-          />
+          /> */}
         </ImageBackground>
       </View>
     );

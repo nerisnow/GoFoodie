@@ -110,10 +110,10 @@ export default class Beverages extends React.Component {
                   onPress={() => this.addItem()}
               />*/}
           </View>
-          <Mybutton
+          {/* <Mybutton
             title="CHECK OUT"
             customClick={() => this.props.navigation.navigate("HomeS")}
-          />
+          /> */}
         </ImageBackground>
       </View>
     );
