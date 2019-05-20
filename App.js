@@ -30,7 +30,8 @@ import { Button } from "react-native-elements";
 
 class SignInScreen extends React.Component {
   static navigationOptions = {
-    title: "Please sign in"
+  			header: null
+    //title: "Please sign in"
   };
 
   render() {
@@ -47,6 +48,7 @@ class SignInScreen extends React.Component {
             justifyContent: "center"
           }}
         >
+        <Text style={{color:'cornflowerblue',fontSize: 50,fontWeight:'bold',fontFamily: 'sans-serif-medium'}}>GO FOODIE</Text>
           <GoogleSigninButton
             style={{
               width: 212,
@@ -141,7 +143,7 @@ const AppStack = createStackNavigator({
         textAlign: "center",
         flex: 1
       },
-      headerLeft: null
+      header:null
     }
   },
   BeveragesS: {
