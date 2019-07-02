@@ -9,75 +9,33 @@ import {
   ImageBackground,
   TextInput
 } from "react-native";
+import AsyncStorage from "@react-native-community/async-storage";
+
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import Item from "./Item";
 import Mybutton from "./components/Mybutton";
 import Mytext from "./components/Mytext";
 import { CheckBox } from "react-native-elements";
 
-export default class Beverages extends React.Component {
+export default class Checkout extends React.Component {
   constructor(props) {
     super(props);
-    this.ref = firebase.firestore().collection("beverage-items");
-    this.unsubscribe = null;
     this.state = {
       textInput: "",
       items: []
     };
+
+    this.getCart();
   }
 
-  updateTextInput(value) {
-    this.setState({ textInput: value });
-  }
-
-  addItem() {
-    this.ref.add({
-      name: this.state.textInput,
-      price: 0
-    });
-
-    this.setState({
-      textinput: ""
-    });
-  }
-
-  componentDidMount() {
-    this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
-  }
-
-  componentWillUnmount() {
-    this.unsubscribe();
-  }
-
-  onCollectionUpdate = querySnapshot => {
-    const items = [];
-    querySnapshot.forEach(doc => {
-      const { name, price } = doc.data();
-
-      items.push({
-        key: doc.id,
-        doc, // DocumentSnapshot
-        name,
-        price
-      });
-    });
-
-    this.setState({
-      items,
-      loading: false
-    });
-  };
-
-  renderSeparator = () => {
-    return (
-      <View
-        style={{
-          height: 2,
-          width: "100%",
-          backgroundColor: "#CED0CE"
-        }}
-      />
-    );
+  getCart = async () => {
+    try {
+      const currentItem = await AsyncStorage.getItem("@item");
+      console.log("test");
+      console.log(currentItem);
+    } catch (e) {
+      // saving error
+    }
   };
 
   render() {
@@ -110,12 +68,10 @@ export default class Beverages extends React.Component {
                   onPress={() => this.addItem()}
               />*/}
           </View>
-          {
-            <Mybutton
-              title="CHECK OUT"
-              customClick={() => this.props.navigation.navigate("CheckoutS")}
-            />
-          }
+          {/* <Mybutton
+            title="CHECK OUT"
+            customClick={() => this.props.navigation.navigate("HomeS")}
+          /> */}
         </ImageBackground>
       </View>
     );

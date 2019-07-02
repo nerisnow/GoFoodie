@@ -61,6 +61,7 @@
 		22DF0A7BBE774A2EB97B3F5C /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E31F47E1B17479AA37EAB90 /* libRNFirebase.a */; };
 		93379B52C4B4493AB2B5F172 /* libRNGoogleSignin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9AD208DBB7E40E6A808E678 /* libRNGoogleSignin.a */; };
 		EB6E5B446E6E4E5CBB9203B3 /* libRNCAsyncStorage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F945F355C3DE451485808228 /* libRNCAsyncStorage.a */; };
+		1974B81C017E433E84F83AD9 /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 085047088BC04D2FB1330A9F /* Fontisto.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -396,6 +397,7 @@
 		D9AD208DBB7E40E6A808E678 /* libRNGoogleSignin.a */ = {isa = PBXFileReference; name = "libRNGoogleSignin.a"; path = "libRNGoogleSignin.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		F370852500944A369D2364DC /* RNCAsyncStorage.xcodeproj */ = {isa = PBXFileReference; name = "RNCAsyncStorage.xcodeproj"; path = "../node_modules/@react-native-community/async-storage/ios/RNCAsyncStorage.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		F945F355C3DE451485808228 /* libRNCAsyncStorage.a */ = {isa = PBXFileReference; name = "libRNCAsyncStorage.a"; path = "libRNCAsyncStorage.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		085047088BC04D2FB1330A9F /* Fontisto.ttf */ = {isa = PBXFileReference; name = "Fontisto.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -692,6 +694,7 @@
 				E0FCCA7197274C188FCD7B0E /* Octicons.ttf */,
 				6530593741E34FDE859D4403 /* SimpleLineIcons.ttf */,
 				F1B37E11F1194D688A266E44 /* Zocial.ttf */,
+				085047088BC04D2FB1330A9F /* Fontisto.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1158,6 +1161,7 @@
 				8B538A0470B546A0BE13E7B8 /* Octicons.ttf in Resources */,
 				05233BB8FA3F4C3F81D7BF96 /* SimpleLineIcons.ttf in Resources */,
 				3D4380C7DC3048F8BD8A1756 /* Zocial.ttf in Resources */,
+				1974B81C017E433E84F83AD9 /* Fontisto.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

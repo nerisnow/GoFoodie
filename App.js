@@ -25,12 +25,13 @@ import Menu from "./pages/MenuScreen";
 import Beverages from "./pages/beverages";
 import Foods from "./pages/foods";
 import Bakery from "./pages/bakery";
+import Checkout from "./pages/checkout";
 import Drawer from "./pages/components/DrawerComponent";
 import { Button } from "react-native-elements";
 
 class SignInScreen extends React.Component {
   static navigationOptions = {
-  			header: null
+    header: null
     //title: "Please sign in"
   };
 
@@ -48,7 +49,16 @@ class SignInScreen extends React.Component {
             justifyContent: "center"
           }}
         >
-        <Text style={{color:'cornflowerblue',fontSize: 50,fontWeight:'bold',fontFamily: 'sans-serif-medium'}}>GO FOODIE</Text>
+          <Text
+            style={{
+              color: "cornflowerblue",
+              fontSize: 50,
+              fontWeight: "bold",
+              fontFamily: "sans-serif-medium"
+            }}
+          >
+            GO FOODIE
+          </Text>
           <GoogleSigninButton
             style={{
               width: 212,
@@ -143,7 +153,7 @@ const AppStack = createStackNavigator({
         textAlign: "center",
         flex: 1
       },
-      header:null
+      header: null
     }
   },
   BeveragesS: {
@@ -173,6 +183,17 @@ const AppStack = createStackNavigator({
     navigationOptions: {
       headerLeft: null,
       title: "BAKERY",
+      headerTitleStyle: {
+        textAlign: "center",
+        flex: 1
+      }
+    }
+  },
+  CheckoutS: {
+    screen: Checkout,
+    navigationOptions: {
+      headerLeft: null,
+      title: "Checkout",
       headerTitleStyle: {
         textAlign: "center",
         flex: 1
