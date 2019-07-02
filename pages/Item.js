@@ -5,13 +5,24 @@ import NumericInput from "react-native-numeric-input";
 import AsyncStorage from "@react-native-community/async-storage";
 
 export default class Item extends React.PureComponent {
-  addToCart = async (value, item, price) => {
+  addToCart = async (key, qty, item, price) => {
     try {
-      await AsyncStorage.setItem("@item", item);
-
-      const currentItem = await AsyncStorage.getItem("@item");
-
+      // await AsyncStorage.clear();
+      const currentItem = await AsyncStorage.getItem("@cart");
       console.log(currentItem);
+      if (currentItem !== null) {
+        var cartItems = JSON.parse(currentItem);
+      } else {
+        var cartItems = {};
+      }
+      var newItem = {
+        item: item,
+        qty: qty,
+        price: price
+      };
+      cartItems[key] = newItem;
+
+      await AsyncStorage.setItem("@cart", JSON.stringify(cartItems));
     } catch (e) {
       // saving error
     }
@@ -62,7 +73,12 @@ export default class Item extends React.PureComponent {
             maxValue={20}
             rounded
             onChange={value =>
-              this.addToCart(value, this.props.name, this.props.price)
+              this.addToCart(
+                this.props.doc.ref.id,
+                value,
+                this.props.name,
+                this.props.price
+              )
             }
           />
         </View>

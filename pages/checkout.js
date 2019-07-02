@@ -12,7 +12,7 @@ import {
 import AsyncStorage from "@react-native-community/async-storage";
 
 import { createStackNavigator, createAppContainer } from "react-navigation";
-import Item from "./Item";
+import CartItem from "./CartItem";
 import Mybutton from "./components/Mybutton";
 import Mytext from "./components/Mytext";
 import { CheckBox } from "react-native-elements";
@@ -24,21 +24,38 @@ export default class Checkout extends React.Component {
       textInput: "",
       items: []
     };
-
+    console.log("test1");
     this.getCart();
   }
 
   getCart = async () => {
     try {
-      const currentItem = await AsyncStorage.getItem("@item");
-      console.log("test");
-      console.log(currentItem);
+      const cartItems = await AsyncStorage.getItem("@cart");
+      console.log("test2");
+      if (cartItems !== null) {
+        var items = JSON.parse(cartItems);
+        this.setState({
+          items,
+          loading: false
+        });
+      }
     } catch (e) {
       // saving error
     }
   };
 
+  clearCart = async () => {
+    try {
+      await AsyncStorage.clear();
+    } catch (e) {
+      //error
+    }
+  };
+
   render() {
+    console.log("render");
+    var cartitems = Object.values(this.state.items);
+    console.log(cartitems);
     return (
       <View
         style={{
@@ -53,25 +70,11 @@ export default class Checkout extends React.Component {
         >
           <View style={{ flex: 1, flexDirection: "column" }}>
             <FlatList
-              data={this.state.items}
-              renderItem={({ item }) => <Item {...item} />}
+              data={cartitems}
+              renderItem={({ item }) => <CartItem {...item} />}
             />
-            {/*<TextInput
-                  placeholder={'Add Item'}
-                  value={this.state.textInput}
-                  onChangeText={(text) => this.updateTextInput(text)}
-              />
-              
-              <Button
-                  title={'Add Item'}
-                  disabled={!this.state.textInput.length}
-                  onPress={() => this.addItem()}
-              />*/}
           </View>
-          {/* <Mybutton
-            title="CHECK OUT"
-            customClick={() => this.props.navigation.navigate("HomeS")}
-          /> */}
+          <Mybutton title="CLEAR CART " customClick={() => this.clearCart()} />
         </ImageBackground>
       </View>
     );

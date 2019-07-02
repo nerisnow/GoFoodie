@@ -82,7 +82,7 @@ class SignInScreen extends React.Component {
         showPlayServicesUpdateDialog: true
       });
       const userInfo = await GoogleSignin.signIn();
-      console.log("User Info --> ", userInfo);
+      // console.log("User Info --> ", userInfo);
       this.setState({ userInfo: userInfo });
       await AsyncStorage.setItem("@userEmail", userInfo.user.email);
       await AsyncStorage.setItem("@userName", userInfo.user.name);

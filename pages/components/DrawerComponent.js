@@ -43,7 +43,7 @@ export default class drawerContentComponents extends Component {
   }
 
   _signOutAsync = async () => {
-    console.log("check");
+    // console.log("check");
     this.setState({ user: "asdf" });
     //Remove user session from the device.
     try {
@@ -57,7 +57,7 @@ export default class drawerContentComponents extends Component {
   };
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     return (
       <View style={styles.container}>
         <Image
