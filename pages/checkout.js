@@ -7,7 +7,8 @@ import {
   Button,
   View,
   ImageBackground,
-  TextInput
+  TextInput,
+  Alert
 } from "react-native";
 import AsyncStorage from "@react-native-community/async-storage";
 
@@ -20,8 +21,10 @@ import { CheckBox } from "react-native-elements";
 export default class Checkout extends React.Component {
   constructor(props) {
     super(props);
+    this.ref = firebase.firestore().collection("orders");
     this.state = {
       textInput: "",
+      total: 0,
       items: []
     };
     console.log("test1");
@@ -34,14 +37,36 @@ export default class Checkout extends React.Component {
       console.log("test2");
       if (cartItems !== null) {
         var items = JSON.parse(cartItems);
+        console.log(items);
+        var cartitems = Object.values(items);
+        var total = 0;
+        cartitems.forEach(item => {
+          total = total + item.qty * item.price;
+        });
+        console.log(total);
         this.setState({
           items,
+          total,
           loading: false
         });
       }
     } catch (e) {
       // saving error
     }
+  };
+
+  confirmOrder = async () => {
+    this.ref.add({
+      items: this.state.items,
+      total: this.state.total
+    });
+    this.clearCart();
+    Alert.alert(
+      "Order Confirmed",
+      "Your order has been placed successfully. Thank you",
+      [{ text: "OK", onPress: () => console.log("OK Pressed") }],
+      { cancelable: false }
+    );
   };
 
   clearCart = async () => {
@@ -55,7 +80,6 @@ export default class Checkout extends React.Component {
   render() {
     console.log("render");
     var cartitems = Object.values(this.state.items);
-    console.log(cartitems);
     return (
       <View
         style={{
@@ -74,7 +98,17 @@ export default class Checkout extends React.Component {
               renderItem={({ item }) => <CartItem {...item} />}
             />
           </View>
+          <View>
+            <Text style={{ color: "white" }}>Total</Text>
+            <Text style={{ color: "white", textAlign: "right" }}>
+              {this.state.total}
+            </Text>
+          </View>
           <Mybutton title="CLEAR CART " customClick={() => this.clearCart()} />
+          <Mybutton
+            title="CONFIRM ORDER "
+            customClick={() => this.confirmOrder()}
+          />
         </ImageBackground>
       </View>
     );
