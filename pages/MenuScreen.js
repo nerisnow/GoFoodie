@@ -93,6 +93,14 @@ export default class Menu extends React.Component {
               </View>
             </ImageBackground>
           </View>
+
+          <View>
+          <Mybutton
+                  title="LEAVE A REVIEW"
+                  customClick={() => this.props.navigation.navigate("ReviewS")}
+                />
+
+          </View>
         </View>
       </View>
     );

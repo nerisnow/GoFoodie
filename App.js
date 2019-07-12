@@ -28,6 +28,7 @@ import Bakery from "./pages/bakery";
 import Checkout from "./pages/checkout";
 import Drawer from "./pages/components/DrawerComponent";
 import { Button } from "react-native-elements";
+import Reviews from "./pages/reviews";
 
 class SignInScreen extends React.Component {
   static navigationOptions = {
@@ -193,7 +194,18 @@ const AppStack = createStackNavigator({
     screen: Checkout,
     navigationOptions: {
       headerLeft: null,
-      title: "Checkout",
+      title: "TOTAL BILL",
+      headerTitleStyle: {
+        textAlign: "center",
+        flex: 1
+      }
+    }
+  },
+  ReviewS: {
+    screen: Reviews,
+    navigationOptions: {
+      headerLeft: null,
+      title: "Reviews",
       headerTitleStyle: {
         textAlign: "center",
         flex: 1
