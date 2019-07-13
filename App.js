@@ -18,7 +18,8 @@ import {
   Text,
   View,
   ImageBackground,
-  StatusBar
+  StatusBar,
+  Image
 } from "react-native";
 import AsyncStorage from "@react-native-community/async-storage";
 import Menu from "./pages/MenuScreen";
@@ -50,7 +51,7 @@ class SignInScreen extends React.Component {
             justifyContent: "center"
           }}
         >
-          <Text
+          {/* <Text
             style={{
               color: "cornflowerblue",
               fontSize: 50,
@@ -59,7 +60,12 @@ class SignInScreen extends React.Component {
             }}
           >
             GO FOODIE
-          </Text>
+          </Text> */}
+          <Image
+          style={{width: 200, height: 200}}
+          //source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}
+          source={require("./pages/LOGO.jpg")}
+        />
           <GoogleSigninButton
             style={{
               width: 212,
@@ -205,7 +211,7 @@ const AppStack = createStackNavigator({
     screen: Reviews,
     navigationOptions: {
       headerLeft: null,
-      title: "Reviews",
+      title: "REVIEWS",
       headerTitleStyle: {
         textAlign: "center",
         flex: 1

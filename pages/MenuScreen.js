@@ -5,7 +5,6 @@ import { Text, View, ImageBackground } from "react-native";
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import Mybutton from "./components/Mybutton";
 import Mytext from "./components/Mytext";
-import SQLite from "react-native-sqlite-storage";
 
 export default class Menu extends React.Component {
   constructor(props) {

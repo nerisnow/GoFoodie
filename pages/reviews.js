@@ -11,10 +11,9 @@ import {
   Alert
 } from "react-native";
 import { createStackNavigator, createAppContainer } from "react-navigation";
-//import Item from "./Item";
 import Mybutton from "./components/Mybutton";
 import Mytext from "./components/Mytext";
-//import { CheckBox } from "react-native-elements";
+
 
 export default class Reviews extends React.Component {
   constructor(props) {
