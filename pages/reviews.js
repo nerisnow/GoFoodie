@@ -122,7 +122,7 @@ export default class Reviews extends React.Component {
         }}
       >
         <ImageBackground
-          source={require("./tea.jpg")}
+          source={require("./rev.png")}
           style={{ width: "100%", height: "100%" }}
         >
           <View style={{ flex: 1, flexDirection: "column" }}>
@@ -148,7 +148,7 @@ export default class Reviews extends React.Component {
                 color: "white"
               }}
               placeholder={"Drop your review"}
-              placeholderTextColor={"#FFF"}
+              placeholderTextColor={"#000"}
               value={this.state.reviewText}
               onChangeText={text => this.updateReview(text)}
             />
