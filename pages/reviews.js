@@ -11,9 +11,9 @@ import {
   Alert
 } from "react-native";
 import { createStackNavigator, createAppContainer } from "react-navigation";
+import Review from "./Review";
 import Mybutton from "./components/Mybutton";
 import Mytext from "./components/Mytext";
-
 
 export default class Reviews extends React.Component {
   constructor(props) {
@@ -22,34 +22,46 @@ export default class Reviews extends React.Component {
     this.unsubscribe = null;
     this.state = {
       reviewText: "",
-      username: "",
-      rating: "",
-      reviewlist:[]
+      reviewStatus: 0,
+      // username: "",
+      // rating: "",
+      reviewlist: []
     };
   }
 
   updateReview(valuereview) {
-    this.setState({ reviewText: valuereview});
+    this.setState({ reviewText: valuereview });
   }
 
   updateRate(valuerate) {
-    this.setState({rating: valuerate});
+    this.setState({ rating: valuerate });
   }
 
   updateUsername(valueusername) {
-    this.setState({username:valueusername });
+    this.setState({ username: valueusername });
   }
   addReview() {
+    const encodedValue = encodeURIComponent(this.state.reviewText);
+    fetch(
+      `http://ec2-54-164-66-14.compute-1.amazonaws.com:8000/bayes/test/?review=${encodedValue}`
+    )
+      .then(res => res.json())
+      .then(data => {
+        this.setState({ reviewStatus: data[0].status });
+        console.log(this.state.reviewStatus);
+      })
+      .catch(console.log);
     this.ref.add({
-      username: this.state.username,
-      review:this.state.reviewText,
-      ratings:this.state.rating
+      // username: this.state.username,
+      review: this.state.reviewText,
+      status: this.state.reviewStatus
+      // ratings:this.state.rating
     });
 
     this.setState({
-      reviewText: "",
-      username: "",
-      rating: ""
+      reviewText: ""
+      // username: "",
+      // rating: ""
     });
     Alert.alert(
       "Review Noted",
@@ -70,14 +82,15 @@ export default class Reviews extends React.Component {
   onCollectionUpdate = querySnapshot => {
     const reviewlist = [];
     querySnapshot.forEach(doc => {
-      const { username, review,ratings } = doc.data();
+      const { review, status } = doc.data();
 
       reviewlist.push({
         key: doc.id,
         doc, // DocumentSnapshot
-        username, 
+        // username,
         review,
-        ratings 
+        status
+        // ratings
       });
     });
 
@@ -117,7 +130,7 @@ export default class Reviews extends React.Component {
               data={this.state.reviewlist}
               renderItem={({ item }) => <Item {...item} />}
             /> */}
-            <TextInput
+            {/* <TextInput
                   style=
                   {{
                     height: 40, borderColor: 'gray', borderWidth: 1, color : "white"
@@ -126,18 +139,20 @@ export default class Reviews extends React.Component {
                   placeholderTextColor={'#FFF'} 
                   value={this.state.username}
                   onChangeText={(text) => this.updateUsername(text)}    
-              />
+              /> */}
             <TextInput
-                  style=
-                  {{
-                    height: 40, borderColor: 'gray', borderWidth: 1, color : "white"
-                  }}
-                  placeholder={'Drop your review'}
-                  placeholderTextColor={'#FFF'} 
-                  value={this.state.reviewText}
-                  onChangeText={(text) => this.updateReview(text)}
-              />
-              <TextInput
+              style={{
+                height: 40,
+                borderColor: "gray",
+                borderWidth: 1,
+                color: "white"
+              }}
+              placeholder={"Drop your review"}
+              placeholderTextColor={"#FFF"}
+              value={this.state.reviewText}
+              onChangeText={text => this.updateReview(text)}
+            />
+            {/* <TextInput
                   style=
                   {{
                     height: 40, borderColor: 'gray', borderWidth: 1, color : "white"
@@ -146,11 +161,15 @@ export default class Reviews extends React.Component {
                   placeholderTextColor={'#FFF'} 
                   value={this.state.rating}
                   onChangeText={(text) => this.updateRate(text)}
-              />
-              <Mybutton
-                  title="ADD REVIEW "
-                  customClick={() => this.addReview()}
-              />
+              /> */}
+            <Mybutton
+              title="ADD REVIEW "
+              customClick={() => this.addReview()}
+            />
+            <FlatList
+              data={this.state.reviewlist}
+              renderItem={({ item }) => <Review {...item} />}
+            />
           </View>
         </ImageBackground>
       </View>
