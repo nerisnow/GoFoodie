@@ -145,7 +145,7 @@ export default class Reviews extends React.Component {
                 height: 40,
                 borderColor: "gray",
                 borderWidth: 1,
-                color: "white"
+                color: "black"
               }}
               placeholder={"Drop your review"}
               placeholderTextColor={"#000"}
