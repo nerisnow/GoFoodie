@@ -51,19 +51,8 @@ class SignInScreen extends React.Component {
             justifyContent: "center"
           }}
         >
-          {/* <Text
-            style={{
-              color: "cornflowerblue",
-              fontSize: 50,
-              fontWeight: "bold",
-              fontFamily: "sans-serif-medium"
-            }}
-          >
-            GO FOODIE
-          </Text> */}
           <Image
           style={{width: 200, height: 200}}
-          //source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}
           source={require("./pages/LOGO.jpg")}
         />
           <GoogleSigninButton

@@ -10,13 +10,14 @@ import {
   TextInput,
   Alert
 } from "react-native";
-import AsyncStorage from "@react-native-community/async-storage";
+
 
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import CartItem from "./CartItem";
 import Mybutton from "./components/Mybutton";
 import Mytext from "./components/Mytext";
 import { CheckBox } from "react-native-elements";
+import AsyncStorage from "@react-native-community/async-storage";
 
 export default class Checkout extends React.Component {
   constructor(props) {
@@ -25,7 +26,8 @@ export default class Checkout extends React.Component {
     this.state = {
       textInput: "",
       total: 0,
-      items: []
+      items: [],
+      userName: null
     };
     console.log("test1");
     this.getCart();
@@ -55,10 +57,17 @@ export default class Checkout extends React.Component {
     }
   };
 
+  async componentDidMount() {
+    AsyncStorage.getItem("@userName").then(value => {
+      this.setState({ userName: value });
+    });
+  }
+
   confirmOrder = async () => {
     this.ref.add({
       items: this.state.items,
-      total: this.state.total
+      total: this.state.total,
+      username: this.state.userName
     });
     this.clearCart();
     Alert.alert(
@@ -102,6 +111,10 @@ export default class Checkout extends React.Component {
             <Text style={{ color: "white" }}>Total</Text>
             <Text style={{ color: "white", textAlign: "right" }}>
               {this.state.total}
+            </Text>
+            <Text style={{ color: "white" }}>Ordered by:</Text>
+            <Text style={{ color: "white", textAlign: "right" }}>
+              {this.state.userName}
             </Text>
           </View>
           <Mybutton title="CLEAR CART " customClick={() => this.clearCart()} />
