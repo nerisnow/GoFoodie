@@ -27,7 +27,9 @@ export default class Checkout extends React.Component {
       textInput: "",
       total: 0,
       items: [],
-      userName: null
+      userName: null,
+      address:null,
+      phone :null
     };
     console.log("test1");
     this.getCart();
@@ -63,19 +65,30 @@ export default class Checkout extends React.Component {
     });
   }
 
+  updateAddress(useraddress) {
+    this.setState({ address: useraddress });
+  }
+
+  updatePhone(userphone) {
+    this.setState({ phone: userphone });
+  }
+
   confirmOrder = async () => {
     this.ref.add({
       items: this.state.items,
       total: this.state.total,
-      username: this.state.userName
+      username: this.state.userName,
+      address: this.state.address,
+      phone: this.state.phone
     });
-    this.clearCart();
+    
     Alert.alert(
       "Order Confirmed",
       "Your order has been placed successfully. Thank you",
       [{ text: "OK", onPress: () => console.log("OK Pressed") }],
       { cancelable: false }
     );
+    this.clearCart();
   };
 
   clearCart = async () => {
@@ -117,6 +130,30 @@ export default class Checkout extends React.Component {
               {this.state.userName}
             </Text>
           </View>
+          <TextInput
+              style={{
+                height: 40,
+                borderColor: "gray",
+                borderWidth: 1,
+                color: "white"
+              }}
+              placeholder={"Drop your address"}
+              placeholderTextColor={"white"}
+              value={this.state.address}
+              onChangeText={text => this.updateAddress(text)}
+            />
+            <TextInput
+              style={{
+                height: 40,
+                borderColor: "gray",
+                borderWidth: 1,
+                color: "white"
+              }}
+              placeholder={"Drop your phone no."}
+              placeholderTextColor={"white"}
+              value={this.state.phone}
+              onChangeText={text => this.updatePhone(text)}
+            />
           <Mybutton title="CLEAR CART " customClick={() => this.clearCart()} />
           <Mybutton
             title="CONFIRM ORDER "
