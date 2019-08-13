@@ -13,8 +13,6 @@ import {
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import Review from "./Review";
 import Mybutton from "./components/Mybutton";
-import Mytext from "./components/Mytext";
-
 
 export default class Reviews extends React.Component {
   constructor(props) {
@@ -24,8 +22,6 @@ export default class Reviews extends React.Component {
     this.state = {
       reviewText: "",
       reviewStatus: 0,
-      // username: "",
-      // rating: "",
       reviewlist: []
     };
   }
@@ -53,16 +49,12 @@ export default class Reviews extends React.Component {
       })
       .catch(console.log);
     this.ref.add({
-      // username: this.state.username,
       review: this.state.reviewText,
       status: this.state.reviewStatus
-      // ratings:this.state.rating
     });
 
     this.setState({
       reviewText: ""
-      // username: "",
-      // rating: ""
     });
     Alert.alert(
       "Review Noted",
@@ -88,10 +80,8 @@ export default class Reviews extends React.Component {
       reviewlist.push({
         key: doc.id,
         doc, // DocumentSnapshot
-        // username,
         review,
         status
-        // ratings
       });
     });
 
@@ -127,20 +117,6 @@ export default class Reviews extends React.Component {
           style={{ width: "100%", height: "100%" }}
         >
           <View style={{ flex: 1, flexDirection: "column" }}>
-            {/* <FlatList
-              data={this.state.reviewlist}
-              renderItem={({ item }) => <Item {...item} />}
-            /> */}
-            {/* <TextInput
-                  style=
-                  {{
-                    height: 40, borderColor: 'gray', borderWidth: 1, color : "white"
-                  }}
-                  placeholder={'Username'}
-                  placeholderTextColor={'#FFF'} 
-                  value={this.state.username}
-                  onChangeText={(text) => this.updateUsername(text)}    
-              /> */}
             <TextInput
               style={{
                 height: 40,
@@ -153,16 +129,6 @@ export default class Reviews extends React.Component {
               value={this.state.reviewText}
               onChangeText={text => this.updateReview(text)}
             />
-            {/* <TextInput
-                  style=
-                  {{
-                    height: 40, borderColor: 'gray', borderWidth: 1, color : "white"
-                  }}
-                  placeholder={'Rate Us'}
-                  placeholderTextColor={'#FFF'} 
-                  value={this.state.rating}
-                  onChangeText={(text) => this.updateRate(text)}
-              /> */}
             <Mybutton
               title="ADD REVIEW "
               customClick={() => this.addReview()}

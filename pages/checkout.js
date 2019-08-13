@@ -1,4 +1,4 @@
-/*Home Screen With buttons to navigate to different options*/
+//checkout bill screen
 import React from "react";
 import firebase from "react-native-firebase";
 import {
@@ -11,11 +11,9 @@ import {
   Alert
 } from "react-native";
 
-
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import CartItem from "./CartItem";
 import Mybutton from "./components/Mybutton";
-import Mytext from "./components/Mytext";
 import { CheckBox } from "react-native-elements";
 import AsyncStorage from "@react-native-community/async-storage";
 
@@ -28,8 +26,8 @@ export default class Checkout extends React.Component {
       total: 0,
       items: [],
       userName: null,
-      address:null,
-      phone :null
+      address: null,
+      phone: null
     };
     console.log("test1");
     this.getCart();
@@ -81,7 +79,7 @@ export default class Checkout extends React.Component {
       address: this.state.address,
       phone: this.state.phone
     });
-    
+
     Alert.alert(
       "Order Confirmed",
       "Your order has been placed successfully. Thank you",
@@ -131,29 +129,29 @@ export default class Checkout extends React.Component {
             </Text>
           </View>
           <TextInput
-              style={{
-                height: 40,
-                borderColor: "gray",
-                borderWidth: 1,
-                color: "white"
-              }}
-              placeholder={"Drop your address"}
-              placeholderTextColor={"white"}
-              value={this.state.address}
-              onChangeText={text => this.updateAddress(text)}
-            />
-            <TextInput
-              style={{
-                height: 40,
-                borderColor: "gray",
-                borderWidth: 1,
-                color: "white"
-              }}
-              placeholder={"Drop your phone no."}
-              placeholderTextColor={"white"}
-              value={this.state.phone}
-              onChangeText={text => this.updatePhone(text)}
-            />
+            style={{
+              height: 40,
+              borderColor: "gray",
+              borderWidth: 1,
+              color: "white"
+            }}
+            placeholder={"Drop your address"}
+            placeholderTextColor={"white"}
+            value={this.state.address}
+            onChangeText={text => this.updateAddress(text)}
+          />
+          <TextInput
+            style={{
+              height: 40,
+              borderColor: "gray",
+              borderWidth: 1,
+              color: "white"
+            }}
+            placeholder={"Drop your phone no."}
+            placeholderTextColor={"white"}
+            value={this.state.phone}
+            onChangeText={text => this.updatePhone(text)}
+          />
           <Mybutton title="CLEAR CART " customClick={() => this.clearCart()} />
           <Mybutton
             title="CONFIRM ORDER "

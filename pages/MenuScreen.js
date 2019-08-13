@@ -1,10 +1,8 @@
-/*Home Screen With buttons to 
-navigate to different options*/
+/*Home Screen With buttons to navigate to different options*/
 import React from "react";
 import { Text, View, ImageBackground } from "react-native";
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import Mybutton from "./components/Mybutton";
-import Mytext from "./components/Mytext";
 
 export default class Menu extends React.Component {
   constructor(props) {
@@ -94,11 +92,10 @@ export default class Menu extends React.Component {
           </View>
 
           <View>
-          <Mybutton
-                  title="LEAVE A REVIEW"
-                  customClick={() => this.props.navigation.navigate("ReviewS")}
-                />
-
+            <Mybutton
+              title="LEAVE A REVIEW"
+              customClick={() => this.props.navigation.navigate("ReviewS")}
+            />
           </View>
         </View>
       </View>

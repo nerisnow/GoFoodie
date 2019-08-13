@@ -1,4 +1,4 @@
-/*Home Screen With buttons to navigate to different options*/
+//bakerymenu
 import React from "react";
 import firebase from "react-native-firebase";
 import {
@@ -12,7 +12,6 @@ import {
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import Item from "./Item";
 import Mybutton from "./components/Mybutton";
-import Mytext from "./components/Mytext";
 import { CheckBox } from "react-native-elements";
 
 export default class Bakery extends React.Component {
